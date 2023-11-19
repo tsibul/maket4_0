@@ -1,0 +1,54 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<body>
+<div th:fragment="header">
+    <header class="header">
+        <div class="container">
+            <menu class="menu">
+                <div class="menu__item mobile__show"><i class="fa fa-solid fa-bars"></i></div>
+                <div class="menu__left">
+                    <a href="http://10.0.1.17/wcenter/"
+                       class="menu__item"><span class="mobile__hide"><i
+                            class="fa fa-solid fa-arrows-to-circle"></i></span>
+                        <span class="mobile__show">&nbsp;Центр</span>
+                    </a>
+                    <a href="/static"
+                       class="menu__item" th:classappend="${activePage == 'order' ? 'active' : ''}">Заказы</a>
+                    <a href="/maket"
+                       class="menu__item" th:classappend="${activePage == 'maket' ? 'active' : ''}">Макет</a>
+                    <a href="/film"
+                       class="menu__item" th:classappend="${activePage == 'film' ? 'active' : ''}">Пленки</a>
+                    <a href="/template"
+                       class="menu__item" th:classappend="${activePage == 'template' ? 'active' : ''}">Шаблоны</a>
+                    <div
+                            class="menu__item submenu" th:classappend="${activePage == 'dict' ? 'active' : ''}">
+                        Справочники
+                        <ul class="submenu__list">
+                            <li class="submenu__list-item">Продукция</li>
+                            <li class="submenu__list-item">Цвета</li>
+                            <li class="submenu__list-item">Клиенты</li>
+                            <li class="submenu__list-item">Печать</li>
+                        </ul>
+                    </div>
+                    <div
+                            class="menu__item" th:classappend="${activePage == 'file' ? 'active' : ''}">Файлы
+                    </div>
+                    <div
+                            class="menu__item" th:classappend="${activePage == 'error' ? 'active' : ''}">Ошибки
+                    </div>
+                    <!--                <div class="menu__item">Макет V4.0.0&nbsp;<strong>Авторизуйтесь</strong></div>-->
+                </div>
+                <nav class="menu__right">
+                    <!--                <div class="menu__item active" id="logout-button"><i-->
+                    <!--                        class="fa fa-solid fa-arrow-right-from-bracket"></i></div>-->
+                    <div class="menu__item active" id="login-button"><i
+                            class="fa fa-solid fa-arrow-right-to-bracket"></i>&nbsp;вход
+                    </div>
+                    <div class="menu__item">ver 4.0.0</div>
+                </nav>
+            </menu>
+        </div>
+    </header>
+</div>
+</body>
+</html>
