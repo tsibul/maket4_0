@@ -140,7 +140,7 @@ searchButtons.forEach((btn) => {
  * listener for clear search input
  */
 searchClearButtons.forEach(btn => {
-    btn.addEventListener('click', e => {
+    btn.addEventListener('click', () => {
         clearSearch(btn);
     });
 });
