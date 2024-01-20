@@ -21,7 +21,7 @@
 }
 
 .full-content {
-  background-color: $colorSecondary100;
+  background-color: $colorSecondary200;
   min-height: calc(100vh);
   padding-top: 90px;
 }
@@ -72,7 +72,10 @@
       opacity: 0.5;
     }
   }
+}
 
+.checkbox-out {
+  display: none;
 }
 
 
@@ -91,22 +94,22 @@
   }
 
   &-save {
-    background-color: $colorPrimary800;
-    border-color: $colorPrimary800;
+    background-color: $colorPrimary500;
+    border-color: $colorPrimary500;
 
     &:hover {
-      color: $colorPrimary800;
+      color: $colorPrimary500;
       background-color: transparent;
       //box-shadow: 6px 6px 12px $colorPrimary800;
     }
   }
 
   &-close {
-    background-color: $colorNeutral400;
-    border-color: $colorNeutral400;
+    background-color: $colorSecondary600;
+    border-color: $colorSecondary600;
 
     &:hover {
-      color: $colorNeutral400;
+      color: $colorSecondary600;
       background-color: transparent;
     }
   }
@@ -117,7 +120,7 @@
   padding: 0 4px;
 
   &-arrows-to-circle {
-    color: $colorSecondary200;
+    color: $colorPrimary800;
   }
 }
 

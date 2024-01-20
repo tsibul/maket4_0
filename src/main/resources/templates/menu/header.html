@@ -12,7 +12,7 @@
                             class="fa fa-solid fa-arrows-to-circle"></i></span>
                         <span class="mobile__show">&nbsp;Центр</span>
                     </a>
-                    <a href="/static"
+                    <a href="/"
                        class="menu__item" th:classappend="${activePage == 'order' ? 'active' : ''}">Заказы</a>
                     <a href="/maket"
                        class="menu__item" th:classappend="${activePage == 'maket' ? 'active' : ''}">Макет</a>
@@ -20,16 +20,16 @@
                        class="menu__item" th:classappend="${activePage == 'film' ? 'active' : ''}">Пленки</a>
                     <a href="/template"
                        class="menu__item" th:classappend="${activePage == 'template' ? 'active' : ''}">Шаблоны</a>
-                    <div
-                            class="menu__item submenu" th:classappend="${activePage == 'dict' ? 'active' : ''}">
+                    <a href="/dictionary"
+                         class="menu__item submenu" th:classappend="${activePage == 'dict' ? 'active' : ''}">
                         Справочники
-                        <ul class="submenu__list">
-                            <li class="submenu__list-item">Продукция</li>
-                            <li class="submenu__list-item">Цвета</li>
-                            <li class="submenu__list-item">Клиенты</li>
-                            <li class="submenu__list-item">Печать</li>
-                        </ul>
-                    </div>
+<!--                        <ul class="submenu__list">-->
+<!--                            <li class="submenu__list-item goods-model">Продукция</li>-->
+<!--                            <li class="submenu__list-item color-model">Цвета</li>-->
+<!--                            <li class="submenu__list-item customer-model">Клиенты</li>-->
+<!--                            <li class="submenu__list-item print-model">Печать</li>-->
+<!--                        </ul>-->
+                    </a>
                     <div
                             class="menu__item" th:classappend="${activePage == 'file' ? 'active' : ''}">Файлы
                     </div>
@@ -49,6 +49,40 @@
             </menu>
         </div>
     </header>
+    <!-- Модальное окно для входа и выхода -->
+    <div id="authModal" class="login">
+        <div class="login__content">
+            <!-- Форма для входа -->
+            <form method="post" id="login-form" action="#">
+                <div class="login__header">
+                    <p class="active">Вход</p>
+                    <span class="login__close">&times;</span>
+                </div>
+
+                <input type="text" name="username" placeholder="Имя пользователя" required class="login__input">
+                <input type="password" name="password" placeholder="Пароль" required class="login__input">
+                <div class="login__buttons">
+                    <button type="submit" class="btn btn-save">Войти</button>
+                </div>
+            </form>
+
+            <!-- Форма для выхода -->
+            <form method="post" id="logout-form" action="#">
+                {% csrf_token %}
+                <div class="login__header">
+                    <p class="active">Выход</p>
+                    <span class="login__close">&times;</span>
+                </div>
+                <p class="login__text">Вы уверены, что хотите выйти?</p>
+                <div class="login__buttons">
+                    <button type="submit" class="btn btn-save">Выйти</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
+
+
+
 </body>
 </html>

@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<!--<html lang="en">-->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Справочники</title>
+    <script src="https://kit.fontawesome.com/e2a5b405b2.js" crossorigin="anonymous"></script>
+
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="/css/style.css">
+    <script type="module" src="/js/dictionary.js" defer></script>
+    <script type="module" src="/js/header.js" defer></script>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+
+</head>
+<body>
+<div th:insert="~{menu/header :: header}"></div>
+<div class="full-content">
+    <div class="container">
+        <div class="dict-main">
+            <div class="dict-menu">
+                <details class="dict-menu__details">
+                    <summary class="dict-menu__header">Продукция
+                    </summary>
+                    <div class="dict-menu__item">
+                        <input type="checkbox" class="checkbox-out" id="goods">
+                        <label for="goods"><i class="fa fa-solid fa-gift"></i>&nbsp;Продукция</label>
+                    </div>
+                    <div class="dict-menu__item">
+                        <input type="checkbox" class="checkbox-out" id="detail">
+                        <label for="detail"><i class="fa fa-solid fa-gift"></i>&nbsp;Деталь</label>
+                    </div>
+                    <div class="dict-menu__item">
+                        <input type="checkbox" class="checkbox-out" id="detailName">
+                        <label for="detailName"><i class="fa fa-solid fa-gift"></i>&nbsp;Название детали</label>
+                    </div>
+                    <div class="dict-menu__item">
+                        <input type="checkbox" class="checkbox-out" id="matrixType">
+                        <label for="matrixType"><i class="fa fa-solid fa-gift"></i>&nbsp;Товарная матрица</label>
+                    </div>
+                    <div class="dict-menu__item">
+                        <input type="checkbox" class="checkbox-out" id="crmType">
+                        <label for="crmType"><i class="fa fa-solid fa-gift"></i>&nbsp;Группа Товара</label>
+                    </div>
+                </details><!--продукция -->
+                <details class="dict-menu__details">
+                    <summary class="dict-menu__header">Цвета</summary>
+                    <div class="dict-menu__item">
+                        <input type="checkbox" class="checkbox-out" id="colorScheme">
+                        <label for="colorScheme"><i class="fa fa-solid fa-paintbrush"></i>&nbsp;Цветовая схема</label>
+                    </div>
+                    <div class="dict-menu__item">
+                        <input type="checkbox" class="checkbox-out" id="color">
+                        <label for="color"><i class="fa fa-solid fa-paintbrush"></i>&nbsp;Цвет</label>
+                    </div>
+                </details><!--цвета -->
+                <details class="dict-menu__details">
+                    <summary class="dict-menu__header">Клиенты</summary>
+                    <div class="dict-menu__item">
+                        <input type="checkbox" class="checkbox-out" id="customer">
+                        <label for="customer"><i class="fa fa-regular fa-handshake"></i>&nbsp;Клиент</label>
+                    </div>
+                    <div class="dict-menu__item">
+                        <input type="checkbox" class="checkbox-out" id="customerGroup">
+                        <label for="customerGroup"><i class="fa fa-regular fa-handshake"></i>&nbsp;Группа клиентов</label>
+                    </div>
+                    <div class="dict-menu__item">
+                        <input type="checkbox" class="checkbox-out" id="customerType">
+                        <label for="customerType"><i class="fa fa-regular fa-handshake"></i>&nbsp;Тип клиента</label>
+                    </div>
+                </details><!--клиенты -->
+                <details class="dict-menu__details">
+                    <summary class="dict-menu__header">Печать
+                    </summary>
+                    <div class="dict-menu__item">
+                        <input type="checkbox" class="checkbox-out" id="printType">
+                        <label for="printType"><i class="fa fa-solid fa-print"></i>&nbsp;Тип печати</label>
+                    </div>
+                    <div class="dict-menu__item">
+                        <input type="checkbox" class="checkbox-out" id="printPlace">
+                        <label for="printPlace"><i class="fa fa-solid fa-print"></i>&nbsp;Место печати</label>
+                    </div>
+                    <div class="dict-menu__item">
+                        <input type="checkbox" class="checkbox-out" id="printPosition">
+                        <label for="printPosition"><i class="fa fa-solid fa-print"></i>&nbsp;Положение печати</label>
+                    </div>
+                    <div class="dict-menu__item">
+                        <input type="checkbox" class="checkbox-out" id="printGroup">
+                        <label for="printGroup"><i class="fa fa-solid fa-print"></i>&nbsp;Группа печати</label>
+                    </div>
+                </details><!--печать -->
+                <details class="dict-menu__details">
+                    <summary class="dict-menu__header">Прочее</summary>
+                </details><!--прочее -->
+            </div>
+            <div class="dict-right">
+
+            </div>
+            <div class="dict">
+                <details class="dict-block dict-block__3">
+                    <summary class="dict-block__header">
+                        <div class="dict-block__active"><i class="fa fa-flip fa-solid fa-gift"></i>&nbsp;Продукция
+                        </div>
+                        <div class="dict-block__search">
+                            <i class="fa fa-solid fa-magnifying-glass"></i>
+                            <input type="search" class="form-input dict-block__form-input"
+                                   placeholder="искать...">
+                            <button class="btn btn-save search_submit" type="button">поиск</button>
+                            <button class="btn btn-close search_clear" type="button">очистить</button>
+                        </div>
+                    </summary>
+                    <div class="dict-block__row dict-block__active goods ">
+                        <div>Продукция</div>
+                        <div>Поз.</div>
+                        <div>Название</div>
+                        <div>Схема рецептуры</div>
+                        <button class="btn btn-save btn_add">добавить</button>
+                    </div>
+                    <div class="dict-block__content ">
+                        <div class="dict-block__row goods dict-block__row_hidden" data-id="0"
+                             id="goods-0">
+                            <input class="id-hidden" name="id" value="0">
+                            <div class="dict-block__text" data-field="goods"
+                                 data-id=""></div>
+                            <div class="dict-block__text" data-field="position"></div>
+                            <div class="dict-block__text" data-field="detail_name" data-id=""></div>
+                            <div class="dict-block__text foreign-key" data-field="recipe_color_scheme"
+                                 data-name="recipe_color_scheme" data-id=""></div>
+                            <button class="btn btn-close btn_delete" type="button">удалить</button>
+                        </div>
+                    </div>
+                </details><!-- продукция -->
+                <details class="dict-block dict-block__4">
+                    <summary class="dict-block__header">
+                        <div class="dict-block__active"><i class="fa fa-flip fa-solid fa-gift"></i>&nbsp;Деталь</div>
+                        <div class="dict-block__search">
+                            <i class="fa fa-solid fa-magnifying-glass"></i>
+                            <input type="search" class="form-input dict-block__form-input"
+                                   placeholder="искать...">
+                            <button class="btn btn-save search_submit" type="button">поиск</button>
+                            <button class="btn btn-close search_clear" type="button">очистить</button>
+                        </div>
+
+                    </summary>
+                    <div class="dict-block__row dict-block__active detail">
+                        <div>Дата</div>
+                        <div>Деталь</div>
+                        <div>Вес,&nbsp;г</div>
+                        <div>Время цикла, сек</div>
+                        <div>Пресс-форма</div>
+                        <button class="btn btn-save btn_add">добавить</button>
+                    </div>
+                    <div class="dict-block__content ">
+                        <div class="dict-block__row detail dict-block__row_hidden" data-id="0"
+                             id="detail-0">
+                            <input class="id-hidden" name="id" value="0">
+                            <div class="dict-block__text" data-field="date_create">{{ date_now|date:"d.m.Y" }}</div>
+                            <div class="dict-block__text foreign-key" data-field="detail_in_goods"
+                                 data-name="detail_in_goods" data-id=""></div>
+                            <div class="dict-block__text" data-field="weight_g" data-name="weight_g"></div>
+                            <div class="dict-block__text" data-field="cycle_time_seconds"
+                                 data-name="cycle_time_seconds"></div>
+                            <div class="dict-block__text foreign-key" data-field="mold-insert"
+                                 data-filter="mold-insert"
+                                 data-name="production" data-id=""></div>
+                            <button class="btn btn-close btn_delete" type="button">удалить</button>
+                        </div>
+                    </div>
+                </details><!-- деталь -->
+                <details class="dict-block dict-block__2">
+                    <summary class="dict-block__header">
+                        <div class="dict-block__active"><i class="fa fa-flip fa-solid fa-gift"></i>&nbsp;Название детали</div>
+                        <div class="dict-block__search">
+<!--                            <i class="fa fa-solid fa-magnifying-glass"></i>-->
+<!--                            <input type="search" class="form-input dict-block__form-input"-->
+<!--                                   placeholder="искать...">-->
+<!--                            <button class="btn btn-save search_submit" type="button">поиск</button>-->
+<!--                            <button class="btn btn-close search_clear" type="button">очистить</button>-->
+                        </div>
+
+                    </summary>
+                    <div class="dict-block__row dict-block__active service-dict">
+                        <div>Дата</div>
+                        <div>Деталь</div>
+                        <div>Вес,&nbsp;г</div>
+                        <div>Время цикла, сек</div>
+                        <div>Пресс-форма</div>
+                        <div>Рабочих гнезд</div>
+                        <div>Cмена</div>
+                        <button class="btn btn-save btn_add">добавить</button>
+                    </div>
+                    <div class="dict-block__content ">
+                        <div class="dict-block__row service-dict dict-block__row_hidden" data-id="0"
+                             id="detailName-0">
+                            <input class="id-hidden" name="id" value="0">
+                            <div class="dict-block__text" data-field="date_create"></div>
+                            <div class="dict-block__text foreign-key" data-field="detail_in_goods"
+                                 data-name="detail_in_goods" data-id=""></div>
+                            <div class="dict-block__text" data-field="weight_g" data-name="weight_g"></div>
+                            <div class="dict-block__text" data-field="cycle_time_seconds"
+                                 data-name="cycle_time_seconds"></div>
+                            <div class="dict-block__text foreign-key" data-field="mold-insert"
+                                 data-filter="mold-insert"
+                                 data-name="production" data-id=""></div>
+                            <div class="dict-block__text" data-field="cavities_quantity_working"
+                                 data-name="cavities_quantity_workings"></div>
+                            <div class="dict-block__text foreign-key" data-field="production"
+                                 data-filter="detail_in_goods"
+                                 data-name="production" data-id=""></div>
+                            <button class="btn btn-close btn_delete" type="button">удалить</button>
+                        </div>
+                    </div>
+                </details><!-- название детали -->
+                <details class="dict-block dict-block__2">
+                    <summary class="dict-block__header dict-block__header_block-space">
+                        <div class="dict-block__active"><i class="fa fa-flip fa-solid fa-gift"></i>&nbsp;Товарная матрица</div>
+                        <div class="dict-block__search">
+<!--                            <i class="fa fa-solid fa-magnifying-glass"></i>-->
+<!--                            <input type="search" class="form-input dict-block__form-input"-->
+<!--                                   placeholder="искать...">-->
+<!--                            <button class="btn btn-save search_submit" type="button">поиск</button>-->
+<!--                            <button class="btn btn-close search_clear" type="button">очистить</button>-->
+                        </div>
+                    </summary>
+                    <div class="dict-block__row dict-block__active service-dict">
+                        <div>Номер</div>
+<!--                        <div>Производитель</div>-->
+                        <button class="btn btn-save btn_add">добавить</button>
+                    </div>
+                    <div class="dict-block__content">
+                        <div class="dict-block__row service-dict dict-block__row_hidden" data-id="0"
+                             id="matrixType-0">
+                            <input class="id-hidden" name="id" value="0">
+                            <div class="dict-block__text"
+                                 data-name="plant_code" data-field="plant_code"></div>
+                            <div class="dict-block__text foreign-key"
+                                 data-name="producer" data-field="producer" data-id=""></div>
+                            <div class="dict-block__text"
+                                 data-name="name" data-field="name"></div>
+                            <div class="dict-block__text"
+                                 data-name="imm_model" data-field="imm_model"></div>
+                            <div class="dict-block__text"
+                                 data-name="producer_code" data-field="producer_code"></div>
+                            <div class="dict-block__text"
+                                 data-name="account_code" data-field="account_code"></div>
+                            <button class="btn btn-close btn_delete" type="button">
+                                удалить
+                            </button>
+                        </div>
+                    </div>
+                </details><!-- товарная матрица -->
+                <details class="dict-block dict-block__2">
+                    <summary class="dict-block__header dict-block__header_block-space">
+                        <div class="dict-block__active"><i class="fa fa-flip fa-solid fa-gift"></i>&nbsp;Группа Товара</div>
+                        <div class="dict-block__search">
+<!--                            <i class="fa fa-solid fa-magnifying-glass"></i>-->
+<!--                            <input type="search" class="form-input dict-block__form-input"-->
+<!--                                   placeholder="искать...">-->
+<!--                            <button class="btn btn-save search_submit" type="button">поиск</button>-->
+<!--                            <button class="btn btn-close search_clear" type="button">очистить</button>-->
+                        </div>
+                    </summary>
+                    <div class="dict-block__row dict-block__active service-dict ">
+                        <div>Дата</div>
+                        <div>Схема</div>
+                        <div></div>
+                        <button class="btn btn-save btn_add">добавить</button>
+                    </div>
+                    <div class="dict-block__content">
+                        <div class="dict-block__row service-dict dict-block__row_hidden" data-id="0"
+                             id="crmType-0">
+                            <input class="id-hidden" name="id" value="0">
+                            <div class="dict-block__text" data-field="date_create">{{ date_now|date:"d.m.Y" }}</div>
+                            <div class="dict-block__text foreign-key" data-id=""
+                                 data-name="recipe_color_scheme" data-field="recipe_color_scheme"></div>
+                            <div class="dict-block__text foreign-key" data-id=""
+                                 data-name="color" data-field="color" data-filter="recipe_color_scheme"></div>
+                            <div class="dict-block__text foreign-key" data-id="" data-filter="color"
+                                 data-name="production" data-field="production"></div>
+                            <div class="dict-block__text foreign-key" data-id=""
+                                 data-name="main_material_type" data-field="main_material_type"></div>
+                            <div class="dict-block__text foreign-key"
+                                 data-id=""
+                                 data-name="main_material"></div>
+                            <div class="dict-block__text"
+                                 data-name="add_material_doze" data-field="add_material_doze"></div>
+                            <div class="dict-block__text foreign-key" data-id=""
+                                 data-name="main_master" data-field="main_master"></div>
+                            <div class="dict-block__text"
+                                 data-name="main_master_doze" data-field="main_master_doze"></div>
+                            <div class="dict-block__text foreign-key" data-id=""
+                                 data-name="add_master" data-field="add_master"></div>
+                            <div class="dict-block__text"
+                                 data-name="add_master_doze" data-field="add_master_doze"></div>
+                            <div class="dict-block__text"
+                                 data-name="comment" data-field="comment"></div>
+                            <button class="btn btn-save btn_add">в&nbsp;архив</button>
+                            <button class="btn btn-close btn_delete" type="button">удалить</button>
+                        </div>
+                    </div>
+                </details><!-- группа товара -->
+                <details class="dict-block dict-block__2">
+                    <summary class="dict-block__header dict-block__header_block-space">
+                        <div class="dict-block__active"><i class="fa fa-flip fa-solid fa-paintbrush"></i>&nbsp;Цветовая схема</div>
+                        <div class="dict-block__search">
+<!--                            <i class="fa fa-solid fa-magnifying-glass"></i>-->
+<!--                            <input type="search" class="form-input dict-block__form-input"-->
+<!--                                   placeholder="искать...">-->
+<!--                            <button class="btn btn-save search_submit" type="button">поиск</button>-->
+<!--                            <button class="btn btn-close search_clear" type="button">очистить</button>-->
+                        </div>
+                    </summary>
+                    <div class="dict-block__row dict-block__active service-dict ">
+                        <div>Схема</div>
+                        <div></div>
+                        <button class="btn btn-save btn_add">добавить</button>
+                    </div>
+                    <div class="dict-block__content">
+                        <div class="dict-block__row service-dict dict-block__row_hidden" data-id="0"
+                             id="colorScheme-0">
+                            <input class="id-hidden" name="id" value="0">
+                            <div class="dict-block__text" data-field="date_create">{{ date_now|date:"d.m.Y" }}</div>
+                            <div class="dict-block__text foreign-key" data-id=""
+                                 data-name="recipe_color_scheme" data-field="recipe_color_scheme"></div>
+                            <div class="dict-block__text foreign-key" data-id=""
+                                 data-name="color" data-field="color" data-filter="recipe_color_scheme"></div>
+                            <div class="dict-block__text foreign-key" data-id=""
+                                 data-name="main_material_type" data-field="main_material_type"></div>
+                            <div class="dict-block__text foreign-key" data-id=""
+                                 data-name="main_master" data-field="main_master"></div>
+                            <div class="dict-block__text"
+                                 data-name="main_master_doze" data-field="main_master_doze"></div>
+                            <div class="dict-block__text"
+                                 data-name="comment" data-field="comment"></div>
+                            <button class="btn btn-save btn_add">в&nbsp;архив</button>
+                            <button class="btn btn-close btn_delete" type="button">
+                                удалить
+                            </button>
+                        </div>
+                    </div>
+                </details><!-- цветовая схема -->
+                <details class="dict-block dict-block__4">
+                    <summary class="dict-block__header">
+                        <div class="dict-block__active"><i class="fa fa-flip fa-solid fa-paintbrush"></i>&nbsp;Цвет</div>
+                        <div class="dict-block__search">
+                            <i class="fa fa-solid fa-magnifying-glass"></i>
+                            <input type="search" class="form-input dict-block__form-input" placeholder="искать...">
+                            <button class="btn btn-save search_submit" type="button">поиск</button>
+                            <button class="btn btn-close search_clear" type="button">очистить</button>
+                        </div>
+
+                    </summary>
+                    <div class="dict-block__row dict-block__active color ">
+                        <div>Название</div>
+                        <div>Цветовая схема</div>
+                        <div></div>
+                        <button class="btn btn-save btn_add">добавить</button>
+                    </div>
+                    <div class="dict-block__content ">
+                        <div class="dict-block__row color dict-block__row_hidden" data-id="0"
+                             id="color-0">
+                            <input class="id-hidden" name="id" value="0">
+                            <div class="dict-block__text" data-field="name" data-name="name"
+                                 data-id=""></div>
+                            <div class="dict-block__text foreign-key" data-field="color_scheme"
+                                 data-name="color_scheme" data-id=""></div>
+                            <button class="btn btn-close btn_delete" type="button">
+                                удалить
+                            </button>
+                        </div>
+                    </div>
+                </details><!-- цвет -->
+                <details class="dict-block dict-block__4">
+                    <summary class="dict-block__header">
+                        <div class="dict-block__active"><i class="fa fa-flip fa-regular fa-handshake"></i>&nbsp;Клиент</div>
+                        <div class="dict-block__search">
+                            <i class="fa fa-solid fa-magnifying-glass"></i>
+                            <input type="search" class="form-input dict-block__form-input"
+                                   placeholder="искать...">
+                            <button class="btn btn-save search_submit" type="button">поиск</button>
+                            <button class="btn btn-close search_clear" type="button">очистить</button>
+                        </div>
+                    </summary>
+                    <div class="dict-block__row dict-block__active customer ">
+                        <div>Тип</div>
+                        <button class="btn btn-save btn_add">добавить</button>
+                    </div>
+                    <div class="dict-block__content ">
+                        <div class="dict-block__row customer dict-block__row_hidden" data-id="0"
+                             id="customer-0">
+                            <input class="id-hidden" name="id" value="0">
+                            <div class="dict-block__text" data-field="type"
+                                 data-name="type"></div>
+                            <button class="btn btn-close btn_delete" type="button">
+                                удалить
+                            </button>
+                        </div>
+                    </div>
+                </details><!-- клиент -->
+                <details class="dict-block dict-block__3">
+                    <summary class="dict-block__header">
+                        <div class="dict-block__active"><i class="fa fa-flip fa-regular fa-handshake"></i>&nbsp;Группа клиентов</div>
+                        <div class="dict-block__search">
+                            <i class="fa fa-solid fa-magnifying-glass"></i>
+                            <input type="search" class="form-input dict-block__form-input"
+                                   placeholder="искать...">
+                            <button class="btn btn-save search_submit" type="button">поиск</button>
+                            <button class="btn btn-close search_clear" type="button">очистить</button>
+                        </div>
+                    </summary>
+                    <div class="dict-block__row dict-block__active customer-group ">
+                        <div>Тип</div>
+                        <button class="btn btn-save btn_add">добавить</button>
+                    </div>
+                    <div class="dict-block__content ">
+                        <div class="dict-block__row customer-group dict-block__row_hidden" data-id="0"
+                             id="customerGroup-0">
+                            <input class="id-hidden" name="id" value="0">
+                            <div class="dict-block__text" data-field="type"
+                                 data-name="type"></div>
+                            <button class="btn btn-close btn_delete" type="button">
+                                удалить
+                            </button>
+                        </div>
+                    </div>
+                </details><!-- группа клиентов -->
+                <details class="dict-block dict-block__2">
+                    <summary class="dict-block__header">
+                        <div class="dict-block__active"><i class="fa fa-flip fa-regular fa-handshake"></i>&nbsp;Тип клиента</div>
+                    </summary>
+                    <div class="dict-block__row dict-block__active customer-type ">
+                        <div>Геометрия</div>
+                        <div>Защита</div>
+                        <div>Материал</div>
+                        <button class="btn btn-save btn_add">добавить</button>
+                    </div>
+                    <div class="dict-block__content ">
+                        <div class="dict-block__row customer-type dict-block__row_hidden" data-id="0"
+                             id="customerType-0">
+                            <input class="id-hidden" name="id" value="0">
+                            <div class="dict-block__text" data-field="geometry"
+                                 data-name="geometry"></div>
+                            <div class="dict-block__text" data-field="resistance"
+                                 data-name="resistance"></div>
+                            <div class="dict-block__text" data-field="bimetallic"
+                                 data-name="bimetallic"></div>
+                            <button class="btn btn-close btn_delete" type="button">
+                                удалить
+                            </button>
+                        </div>
+                    </div>
+                </details><!-- тип клиента -->
+                <details class="dict-block dict-block__2">
+                    <summary class="dict-block__header">
+                        <div class="dict-block__active"><i class="fa fa-flip fa-solid fa-print"></i>&nbsp;Тип печати</div>
+                        <div class="dict-block__search">
+<!--                            <i class="fa fa-solid fa-magnifying-glass"></i>-->
+<!--                            <input type="search" class="form-input dict-block__form-input"-->
+<!--                                   placeholder="искать...">-->
+<!--                            <button class="btn btn-save search_submit" type="button">поиск</button>-->
+<!--                            <button class="btn btn-close search_clear" type="button">очистить</button>-->
+                        </div>
+                    </summary>
+                    <div class="dict-block__row dict-block__active service-dict">
+                        <div>Инв. номер</div>
+                        <div>Название</div>
+                        <button class="btn btn-save btn_add">добавить</button>
+                    </div>
+                    <div class="dict-block__content ">
+                        <div class="dict-block__row service-dict dict-block__row_hidden" data-id="0"
+                             id="printType-0">
+                            <input class="id-hidden" name="id" value="0">
+                            <div class="dict-block__text active" data-field="account_code"
+                                 data-name="account_code"></div>
+                            <div class="dict-block__text active" data-field="name"
+                                 data-name="name"></div>
+                            <div class="dict-block__text foreign-key" data-field="producer"
+                                 data-name="producer" data-id=""></div>
+                            <div class="dict-block__text" data-field="length_mm"
+                                 data-name="length_mm"></div>
+                            <div class="dict-block__text" data-field="mount_time_min"
+                                 data-name="mount_time_min"></div>
+                            <div class="dict-block__text bool-field" data-field="if_hot_runner"
+                                 data-name="if_hot_runner" data-id=""></div>
+                            <div class="dict-block__text bool-field" data-field="if_modular"
+                                 data-name="if_modular" data-id=""></div>
+                            <div class="dict-block__text" data-field="flange_fix_plate_mm"
+                                 data-name="flange_fix_plate_mm"></div>
+                            <div class="dict-block__text" data-field="plant_no"
+                                 data-name="plant_no"></div>
+                            <div></div>
+                            <div></div>
+                            <div class="dict-block__text active" data-field="producer_model"
+                                 data-name="producer_model"></div>
+                            <div class="dict-block__text" data-field="producer_code"
+                                 data-name="producer_code"></div>
+                            <div class="dict-block__text" data-field="width_mm"
+                                 data-name="width_mm"></div>
+                            <div class="dict-block__text" data-field="release_time_min"
+                                 data-name="release_time_min"></div>
+                            <div class="dict-block__text" data-field="hot_runner_quantity"
+                                 data-name="hot_runner_quantity"></div>
+                            <div class="dict-block__text bool-field" data-field="changeable_modifier"
+                                 data-name="changeable_modifier" data-id=""></div>
+                            <div class="dict-block__text" data-field="flange_moving_plate_mm"
+                                 data-name="flange_moving_plate_mm"></div>
+                            <div class="dict-block__text foreign-key" data-field="ejector_connector_type"
+                                 data-name="ejector_connector_type" data-id=""></div>
+                            <button class="btn btn-close btn_delete" type="button">удалить</button>
+                        </div>
+                    </div>
+                </details><!-- тип печати -->
+                <details class="dict-block dict-block__3">
+                    <summary class="dict-block__header">
+                        <div class="dict-block__active"><i class="fa fa-flip fa-solid fa-print"></i>&nbsp;Место печати</div>
+                        <div class="dict-block__search">
+<!--                            <i class="fa fa-solid fa-magnifying-glass"></i>-->
+<!--                            <input type="search" class="form-input dict-block__form-input"-->
+<!--                                   placeholder="искать...">-->
+<!--                            <button class="btn btn-save search_submit" type="button">поиск</button>-->
+<!--                            <button class="btn btn-close search_clear" type="button">очистить</button>-->
+                        </div>
+
+                    </summary>
+                    <div class="dict-block__row dict-block__active service-dict">
+                        <div>Инв. номер</div>
+                        <div>Название</div>
+                        <button class="btn btn-save btn_add">добавить</button>
+                    </div>
+                    <div class="dict-block__content ">
+                        <div class="dict-block__row service-dict dict-block__row_hidden" data-id="0"
+                             id="printPlace-0">
+                            <input class="id-hidden" name="id" value="0">
+                            <div class="dict-block__text active" data-field="account_code"
+                                 data-name="account_code"></div>
+                            <div class="dict-block__text active" data-field="name"
+                                 data-name="name"></div>
+                            <div class="dict-block__text foreign-key" data-field="producer"
+                                 data-name="producer" data-id=""></div>
+                            <div class="dict-block__text" data-field="height_mm"
+                                 data-name="height_mm"></div>
+                            <div class="dict-block__text" data-field="mount_time_min"
+                                 data-name="mount_time_min"></div>
+                            <div class="dict-block__text bool-field" data-field="if_air"
+                                 data-name="if_air" data-id=""></div>
+                            <div class="dict-block__text" data-field="air_valves_quantity_moving_plate"
+                                 data-name="air_valves_quantity_moving_plate"></div>
+                            <div class="dict-block__text bool-field" data-field="if_modular"
+                                 data-name="if_modular" data-id=""></div>
+                            <div class="dict-block__text" data-field="plant_no"
+                                 data-name="plant_no"></div>
+                            <div></div>
+                            <div></div>
+                            <div class="dict-block__text active" data-field="producer_model"
+                                 data-name="producer_model"></div>
+                            <div class="dict-block__text" data-field="producer_code"
+                                 data-name="producer_code"></div>
+                            <div class="dict-block__text" data-field="weight_kg"
+                                 data-name="weight_g"></div>
+                            <div class="dict-block__text" data-field="release_time_min"
+                                 data-name="release_time_min"></div>
+                            <div></div>
+                            <div class="dict-block__text" data-field="air_valves_quantity_fixed_plate"
+                                 data-name="air_valves_quantity_fixed_plate"></div>
+                            <div class="dict-block__text bool-field" data-field="changeable_modifier"
+                                 data-name="changeable_modifier" data-id=""></div>
+                            <div></div>
+                            <button class="btn btn-close btn_delete" type="button">удалить</button>
+                        </div>
+                    </div>
+                </details><!-- место печати -->
+                <details class="dict-block dict-block__2">
+                    <summary class="dict-block__header">
+                        <div class="dict-block__active"><i class="fa fa-flip fa-solid fa-print"></i>&nbsp;Положение печати</div>
+                        <div class="dict-block__search">
+<!--                            <i class="fa fa-solid fa-magnifying-glass"></i>-->
+<!--                            <input type="search" class="form-input dict-block__form-input"-->
+<!--                                   placeholder="искать...">-->
+<!--                            <button class="btn btn-save search_submit" type="button">поиск</button>-->
+<!--                            <button class="btn btn-close search_clear" type="button">очистить</button>-->
+                        </div>
+                    </summary>
+                    <div class="dict-block__row dict-block__active print-place">
+                        <div>Инв. номер</div>
+                        <div>Название</div>
+                        <div>Производитель</div>
+                        <button class="btn btn-save btn_add">добавить</button>
+                    </div>
+                    <div class="dict-block__content ">
+                        <div class="dict-block__row print-place dict-block__row_hidden" data-id="0"
+                             id="printPosition-0">
+                            <input class="id-hidden" name="id" value="0">
+                            <div class="dict-block__text active" data-field="account_code"
+                                 data-name="account_code"></div>
+                            <div class="dict-block__text active" data-field="name"
+                                 data-name="name"></div>
+                            <div class="dict-block__text foreign-key" data-field="producer"
+                                 data-name="producer" data-id=""></div>
+                            <div class="dict-block__text" data-field="mount_time_min"
+                                 data-name="mount_time_min"></div>
+                            <div class="dict-block__text bool-field" data-field="if_hydraulic"
+                                 data-name="if_hydraulic" data-id=""></div>
+                            <div class="dict-block__text" data-field="hydraulic_quantity_moving_plate"
+                                 data-name="hydraulic_quantity_moving_plate"></div>
+                            <div class="dict-block__text bool-field" data-field="if_modular"
+                                 data-name="if_modular" data-id=""></div>
+                            <div class="dict-block__text" data-field="plant_no"
+                                 data-name="plant_no"></div>
+                            <div></div>
+                            <div></div>
+                            <div class="dict-block__text active" data-field="producer_model"
+                                 data-name="producer_model"></div>
+                            <div class="dict-block__text" data-field="producer_code"
+                                 data-name="producer_code"></div>
+                            <div class="dict-block__text" data-field="release_time_min"
+                                 data-name="release_time_min"></div>
+                            <div></div>
+                            <div class="dict-block__text" data-field="hydraulic_quantity_fixed_plate"
+                                 data-name="hydraulic_quantity_fixed_plate"></div>
+                            <div class="dict-block__text bool-field" data-field="changeable_modifier"
+                                 data-name="changeable_modifier" data-id=""></div>
+                            <div></div>
+                            <button class="btn btn-close btn_delete" type="button">удалить</button>
+                        </div>
+                    </div>
+                </details><!-- положение печати -->
+                <details class="dict-block dict-block__3">
+                    <summary class="dict-block__header">
+                        <div class="dict-block__active"><i class="fa fa-flip fa-solid fa-print"></i>&nbsp;Группа печати</div>
+                        <div class="dict-block__search">
+                            <i class="fa fa-solid fa-magnifying-glass"></i>
+                            <input type="search" class="form-input dict-block__form-input"
+                                   placeholder="искать...">
+                            <button class="btn btn-save search_submit" type="button">поиск</button>
+                            <button class="btn btn-close search_clear" type="button">очистить</button>
+                        </div>
+                    </summary>
+                    <div class="dict-block__row dict-block__active print-group">
+                        <div>ТПА</div>
+                        <div>Усилие смыкания, кН</div>
+                        <div>Макс ход плит, мм</div>
+                        <div>Мин высота формы, мм</div>
+                        <button class="btn btn-save btn_add">добавить</button>
+                    </div>
+                    <div class="dict-block__content ">
+                        <div class="dict-block__row print-group dict-block__row_hidden" data-id="0"
+                             id="printGroup-0">
+                            <input class="id-hidden" name="id" value="0">
+                            <div class="dict-block__text foreign-key" data-field="imm"
+                                 data-name="imm" data-id=""></div>
+                            <div class="dict-block__text active" data-field="clamping_force_kN"
+                                 data-name="clamping_force_kN"></div>
+                            <div class="dict-block__text" data-field="max_plate_stroke_mm"
+                                 data-name="max_plate_stroke_mm"></div>
+                            <div class="dict-block__text" data-field="min_mold_height_mm"
+                                 data-name="min_mold_height_mm"></div>
+                            <div class="dict-block__text" data-field="plate_horizontal_mm"
+                                 data-name="plate_horizontal_mm"></div>
+                            <div class="dict-block__text" data-field="bars_horizontal_mm"
+                                 data-name="bars_horizontal_mm"></div>
+                            <div class="dict-block__text" data-field="opening_positions_quantity"
+                                 data-name="opening_positions_quantity"></div>
+                            <div class="dict-block__text" data-field="max_mold_weight_kg"
+                                 data-name="max_mold_weight_kg"></div>
+                            <div class="dict-block__text" data-field="flange_moving_mm"
+                                 data-name="flange_moving_mm"></div>
+                            <div></div>
+                            <div></div>
+                            <div class="dict-block__text active" data-field="locking_force_kN"
+                                 data-name="locking_force_kN"></div>
+                            <div class="dict-block__text" data-field="max_plate_distance_mm"
+                                 data-name="max_plate_distance_mm"></div>
+                            <div class="dict-block__text" data-field="max_mold_height_mm"
+                                 data-name="max_mold_height_mm"></div>
+                            <div class="dict-block__text" data-field="plate_vertical_mm"
+                                 data-name="plate_vertical_mm"></div>
+                            <div class="dict-block__text" data-field="bars_vertical_mm"
+                                 data-name="bars_vertical_mm"></div>
+                            <div class="dict-block__text" data-field="closing_positions_quantity"
+                                 data-name="closing_positions_quantity"></div>
+                            <div class="dict-block__text" data-field="max_mold_weight_per_plate_kg"
+                                 data-name="max_mold_weight_per_plate_kg"></div>
+                            <div class="dict-block__text" data-field="flange_fixed_mm"
+                                 data-name="flange_fixed_mm"></div>
+                            <button class="btn btn-close btn_delete" type="button">удалить</button>
+                        </div>
+                    </div>
+                </details><!-- группа печати -->
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

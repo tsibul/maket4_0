@@ -4,7 +4,7 @@
 .header {
   position: fixed;
   width: 100%;
-  background-color: $colorPrimary500;
+  background-color: $colorPrimary400;
   z-index: 20;
 }
 
@@ -25,7 +25,7 @@
   }
 
   &__item {
-    color: $colorSecondary200;
+    color: $colorPrimary800;
     padding: 20px 10px;
     text-decoration: none;
     border: 1px solid transparent;
@@ -35,48 +35,48 @@
 
     &:hover {
       color: $colorPrimary800;
-      background-color: $colorSecondary200;
+      background-color: $colorPrimary200;
       box-shadow: 4px 4px 8px $colorPrimary800;
     }
   }
 }
 
-.submenu{
-  position: relative;
-
-  &__list{
-    width: 100%;
-    display: none;
-    position: absolute;
-    background-color: $colorSecondary200;
-    @include brd-standard;
-    left: 0px;
-    top: 60px;
-    list-style: none;
-    transition: all 0.3s ease-out;
-    box-shadow: 4px 4px 8px $colorPrimary800;
-
-  }
-
-  &__list-item{
-      padding: 16px 10px;
-    &:hover{
-      background-color:$colorPrimary500;
-      color: $colorSecondary200;
-      border: 1px solid transparent;
-      border-radius: 10px;
-    }
-  }
-
-  &:hover &__list{
-    display: flex;
-    flex-direction: column;
-  }
-
-}
+//.submenu{
+//  position: relative;
+//
+//  &__list{
+//    width: 100%;
+//    display: none;
+//    position: absolute;
+//    background-color: $colorSecondary200;
+//    @include brd-standard;
+//    left: 0px;
+//    top: 60px;
+//    list-style: none;
+//    transition: all 0.3s ease-out;
+//    box-shadow: 4px 4px 8px $colorPrimary800;
+//
+//  }
+//
+//  &__list-item{
+//      padding: 16px 10px;
+//    &:hover{
+//      background-color:$colorPrimary500;
+//      color: $colorSecondary200;
+//      border: 1px solid transparent;
+//      border-radius: 10px;
+//    }
+//  }
+//
+//  &:hover &__list{
+//    display: flex;
+//    flex-direction: column;
+//  }
+//
+//}
 
 .active {
-  font-weight: 900;
+  font-weight: 600;
 }
 
 .login {
@@ -95,7 +95,7 @@
     justify-content: space-between;
     width: 100%;
     border-radius: 10px;
-    background-color: $colorSecondary400;
+    background-color: $colorPrimary400;
     display: flex;
     flex-direction: row;
     color: $colorPrimary800;
@@ -122,7 +122,8 @@
     padding: 4px;
     border-radius: 10px;
     border-style: solid;
-    margin: 4px;
+    margin: 4px 0;
+    width: 100%;
   }
 
   &__buttons {
