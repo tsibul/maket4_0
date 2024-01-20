@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Maket40Application {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(Maket40Application.class, args);
 	}
 
