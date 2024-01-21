@@ -21,14 +21,14 @@
                     <a href="/template"
                        class="menu__item" th:classappend="${activePage == 'template' ? 'active' : ''}">Шаблоны</a>
                     <a href="/dictionary"
-                         class="menu__item submenu" th:classappend="${activePage == 'dict' ? 'active' : ''}">
+                       class="menu__item submenu" th:classappend="${activePage == 'dict' ? 'active' : ''}">
                         Справочники
-<!--                        <ul class="submenu__list">-->
-<!--                            <li class="submenu__list-item goods-model">Продукция</li>-->
-<!--                            <li class="submenu__list-item color-model">Цвета</li>-->
-<!--                            <li class="submenu__list-item customer-model">Клиенты</li>-->
-<!--                            <li class="submenu__list-item print-model">Печать</li>-->
-<!--                        </ul>-->
+                        <!--                        <ul class="submenu__list">-->
+                        <!--                            <li class="submenu__list-item goods-model">Продукция</li>-->
+                        <!--                            <li class="submenu__list-item color-model">Цвета</li>-->
+                        <!--                            <li class="submenu__list-item customer-model">Клиенты</li>-->
+                        <!--                            <li class="submenu__list-item print-model">Печать</li>-->
+                        <!--                        </ul>-->
                     </a>
                     <div
                             class="menu__item" th:classappend="${activePage == 'file' ? 'active' : ''}">Файлы
@@ -39,12 +39,12 @@
                     <!--                <div class="menu__item">Макет V4.0.0&nbsp;<strong>Авторизуйтесь</strong></div>-->
                 </div>
                 <nav class="menu__right">
-                    <!--                <div class="menu__item active" id="logout-button"><i-->
-                    <!--                        class="fa fa-solid fa-arrow-right-from-bracket"></i></div>-->
+                    <div class="menu__item active" id="logout-button"><i
+                            class="fa fa-solid fa-arrow-right-from-bracket"></i></div>
                     <div class="menu__item active" id="login-button"><i
                             class="fa fa-solid fa-arrow-right-to-bracket"></i>&nbsp;вход
                     </div>
-                    <div class="menu__item">ver 4.0.0</div>
+                    <div class="menu__item">ver 4.0.1</div>
                 </nav>
             </menu>
         </div>
@@ -68,7 +68,6 @@
 
             <!-- Форма для выхода -->
             <form method="post" id="logout-form" action="#">
-                {% csrf_token %}
                 <div class="login__header">
                     <p class="active">Выход</p>
                     <span class="login__close">&times;</span>
@@ -81,7 +80,6 @@
         </div>
     </div>
 </div>
-
 
 
 </body>
