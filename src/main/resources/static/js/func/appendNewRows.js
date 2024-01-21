@@ -12,15 +12,15 @@ import {fillNewRow} from "./fillNewRow.js";
  * @param searchString — string to search
  * @param shDeleted — parameter if show deleted records
  * @param unclosed — parameter show closed/unclosed records
- * @returns {Promise<void>} array of Html elements added
+ * @returns {Promise<*[]>} array of Html elements added
  */
-export async function appendNewRows(rowCurrent, blockContent, searchString, shDeleted, unclosed) {
+export async function appendNewRows(rowCurrent, blockContent, searchString, shDeleted) {
     const lastRecord = rowCurrent.dataset.last
     delete rowCurrent.dataset.last;
     let newRow;
     const rowCopy = blockContent.querySelector('.dict-block__row_hidden');
     const dictType = typeDict(rowCurrent);
-    const jsonUrl = `/production/json_dict_next_20/${dictType}/${lastRecord}/default/${searchString}/${shDeleted}/${unclosed}`;
+    const jsonUrl = `/next_20/${dictType}/${lastRecord}/${searchString}/${shDeleted}`;
     const nextRecords = await fetchJsonData(jsonUrl);
     let i = 0;
     const newRows = [];
@@ -30,7 +30,7 @@ export async function appendNewRows(rowCurrent, blockContent, searchString, shDe
         await fillNewRow(record, i, newRow);
         newRow.classList.remove('dict-block__row_hidden');
         if (i === 20) {
-            newRow.dataset.last = Number.parseInt(lastRecord) + 20;
+            newRow.dataset.last = (Number.parseInt(lastRecord) + 20).toString();
         }
         blockContent.appendChild(newRow);
         newRows.push(newRow);
