@@ -17,6 +17,6 @@ export async function initDictionary(eventTarget){
         temporaryRow.setAttribute('data-last', '0');
         dictBlockContent.appendChild(temporaryRow);
         dictBlockContent.appendChild(hiddenRow);
-        await appendNewRows(temporaryRow, dictBlockContent, searchVal, 0, 0);
+        await appendNewRows(temporaryRow, dictBlockContent, searchVal, 0);
         temporaryRow.remove();
 }
