@@ -71,9 +71,9 @@ userRights();
 
 addEventListener('mousedown', function (element) {
     try {
-        const parentRow = document.querySelector('form').closest('.dict-block__row')
+        const parentRow = document.getElementById('form-dict').closest('.dict-block__row')
         if (element.target !== parentRow && !parentRow.contains(element.target)) {
-            const buttonClose = document.querySelector('form').querySelector('.btn-close');
+            const buttonClose = document.getElementById('form-dict').querySelector('.btn-close');
             cancelEditRecord(buttonClose);
         }
     } catch (exception) {
@@ -91,7 +91,7 @@ dictBlockContent.forEach(block => {
             if (!searchString) {
                 searchString = '';
             }
-            await appendNewRows(lastRecord, block, searchString, 0, 0);
+            await appendNewRows(lastRecord, block, searchString, 0);
         }
     });
 });
@@ -131,7 +131,7 @@ dictBlockContent.forEach(block => {
 searchButtons.forEach((btn) => {
     btn.addEventListener('mousedown', async (search) => {
         const btnEvent = searchButtonEvent(btn, search);
-        await appendNewRows(btnEvent[0], btnEvent[2], btnEvent[1], showDeleted, 0);
+        await appendNewRows(btnEvent[0], btnEvent[2], btnEvent[1], showDeleted);
         btnEvent[0].remove();
     });
 });
