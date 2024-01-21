@@ -1,7 +1,6 @@
 package ru.maket.maket4_0.db.dictionary;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.Repository;
 import ru.maket.maket4_0.db.dictionary.color.*;
 import ru.maket.maket4_0.db.dictionary.color.repository.ColorRepository;
 import ru.maket.maket4_0.db.dictionary.color.repository.ColorSchemeRepository;

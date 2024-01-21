@@ -1,10 +1,7 @@
 package ru.maket.maket4_0.db.dictionary;
 
 import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
-import ru.maket.maket4_0.db.dictionary.color.Color;
 
 import java.util.List;
 

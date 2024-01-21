@@ -7,12 +7,11 @@ import {fillNewRow} from "./fillNewRow.js";
 /**
  * Append 20 rows after current row fetch from db
  * fetch url of dictionary_json from dictionary.py
- * @param rowCurrent — current row with last-id != '' after which append records
- * @param blockContent — content block of current dictionary
- * @param searchString — string to search
- * @param shDeleted — parameter if show deleted records
- * @param unclosed — parameter show closed/unclosed records
- * @returns {Promise<*[]>} array of Html elements added
+ * @param rowCurrent
+ * @param blockContent
+ * @param searchString
+ * @param shDeleted
+ * @returns {Promise<*[]>}
  */
 export async function appendNewRows(rowCurrent, blockContent, searchString, shDeleted) {
     const lastRecord = rowCurrent.dataset.last

@@ -27,7 +27,10 @@ public abstract class MaketDictionary {
         this.deleted = false;
     }
 
-    @OrderBy("name ASC")
+    public Long getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }
