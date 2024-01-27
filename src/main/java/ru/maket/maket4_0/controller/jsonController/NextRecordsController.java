@@ -51,7 +51,7 @@ public class NextRecordsController {
         ArrayList<HashMap<String, Object>> hashMapList = new ArrayList<>();
         for (Object record : records) {
             HashMap<String, Object> map = new HashMap<>();
-            Field fieldR = null;
+            Field fieldR;
             for (SingularAttribute<?, ?> field : fieldSet) {
                 String attributeName = field.getName();
                 try {
