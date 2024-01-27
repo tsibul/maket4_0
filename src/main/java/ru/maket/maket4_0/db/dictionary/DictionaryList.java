@@ -1,6 +1,7 @@
 package ru.maket.maket4_0.db.dictionary;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 import ru.maket.maket4_0.db.dictionary.color.*;
 import ru.maket.maket4_0.db.dictionary.color.repository.ColorRepository;
 import ru.maket.maket4_0.db.dictionary.color.repository.ColorSchemeRepository;
@@ -20,7 +21,7 @@ public class DictionaryList {
         this.colorSchemeRepository = colorSchemeRepository;
     }
 
-    public HashMap<String, Class<? extends MaketDictionary>> dictionaryList () {
+    public static HashMap<String, Class<? extends MaketDictionary>> dictionaryList () {
         HashMap<String, Class<? extends MaketDictionary>> dictList = new HashMap<>();
         dictList.put("Color", Color.class);
         dictList.put("ColorScheme", ColorScheme.class);
@@ -37,8 +38,8 @@ public class DictionaryList {
         dictList.put("PrintType", PrintType.class);
         return dictList;
     }
-    public HashMap<String, JpaRepository<? extends MaketDictionary, Long>>repositoryList () {
-        HashMap<String, JpaRepository<? extends MaketDictionary, Long>> repList = new HashMap<>();
+    public HashMap<String, CrudRepository<? extends MaketDictionary, Long>>repositoryList () {
+        HashMap<String, CrudRepository<? extends MaketDictionary, Long>> repList = new HashMap<>();
         repList.put("Color", colorRepository);
         repList.put("ColorScheme", colorSchemeRepository);
         return repList;
