@@ -11,6 +11,6 @@ export function saveDictionaryRecord(obj) {
     event.preventDefault();
     const updateForm = obj.closest('.form-row');
     const dictionaryType = updateForm.parentElement.id.split('-')[0];
-    const fetchPath = '/production/dict_update/' + dictList[dictionaryType];
+    const fetchPath = 'dict_update/' + dictList[dictionaryType];
     saveEditForm(updateForm, fetchPath)
 }
