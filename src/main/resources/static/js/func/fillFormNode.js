@@ -83,7 +83,7 @@ export async function fillFormNode(obj, newNode, nodeElements) {
      */
     async function createDropdown(node) {
         let childDropdownNode;
-        const parentRow = node.closest('.dict-block__row');
+        // const parentRow = node.closest('.dict-block__row');
         const dictType = dictList[node.dataset.name];
         childDropdownNode = document.createElement('div');
         childDropdownNode.insertAdjacentHTML('beforeend', dropdownCode);
@@ -98,25 +98,29 @@ export async function fillFormNode(obj, newNode, nodeElements) {
             dropDownListenerVisible(childDropdownNode, e);
         });
         childDropdownNode.querySelector('.dropdown__hidden').name = node.dataset.name;
-        const filterModel = dictList[node.dataset.filter];
+        // const filterModel = dictList[node.dataset.filter];
         const ulContent = childDropdownNode.querySelector('.dropdown__content');
-        let jsonUrl;
-        if (filterModel && parentRow.dataset.id !== 'e') {
-            const filterNo = parentRow.querySelector(`[data-name = "${node.dataset.filter}"]`).dataset.id;
-            jsonUrl = `/production/dictionary_json_filter/${dictType}/${filterModel}/${Number.parseInt(filterNo)}`;
-            childDropdownNode.querySelector('.dropdown__hidden').dataset.filter = node.dataset.filter;
-        } else if (!filterModel) {
-            jsonUrl = `/production/dictionary_json_filter/${dictType}/default/0`;
-        } else {
-            childDropdownNode.querySelector('.dropdown__hidden').dataset.filter = node.dataset.filter;
-            jsonUrl = `/production/dictionary_json_filter/default/default/0`;
-        }
-        const jsonData = await fetchJsonData(jsonUrl);
-        const dictionaryList = JSON.parse(jsonData);
+        const jsonUrl =  `/dictionary_json_filter/${dictType}`;
+        // if (filterModel && parentRow.dataset.id !== 'e') {
+        //     const filterNo = parentRow.querySelector(`[data-name = "${node.dataset.filter}"]`).dataset.id;
+        //     jsonUrl = `/dictionary_json_filter/${dictType}/${filterModel}/${Number.parseInt(filterNo)}`;
+        //     childDropdownNode.querySelector('.dropdown__hidden').dataset.filter = node.dataset.filter;
+        // } else if (!filterModel) {
+        //     jsonUrl = `/dictionary_json_filter/${dictType}/default/0`;
+        // } else {
+        //     childDropdownNode.querySelector('.dropdown__hidden').dataset.filter = node.dataset.filter;
+        //     jsonUrl = `/dictionary_json_filter/default/default/0`;
+        // }
+
+        // const jsonData = await fetchJsonData(jsonUrl);
+        // const dictionaryList = JSON.parse(jsonData);
+
+        const dictionaryList = await fetchJsonData(jsonUrl);
+
         if (!dictionaryList) {
-            childDropdownNode.querySelector('.dropdown__hidden').value = Object.keys(dictionaryList[0])[0];
-            childDropdownNode.querySelector('.dropdown__input_dict').value = Object.values(dictionaryList[0])[0];
-            childDropdownNode.querySelector('.dropdown__input_dict').dataset.value = Object.values(dictionaryList[0])[0];
+            childDropdownNode.querySelector('.dropdown__hidden').value = dictionaryList[0]['id'];
+            childDropdownNode.querySelector('.dropdown__input_dict').value = dictionaryList[0]['publicName'];
+            childDropdownNode.querySelector('.dropdown__input_dict').dataset.value = dictionaryList[0]['publicName'];
         }
         fillLines(ulContent, dictionaryList);
         fillFields(node, childDropdownNode);
