@@ -6,19 +6,35 @@ import ru.maket.maket4_0.db.dictionary.MaketDictionary;
 
 @Entity
 public class Color extends MaketDictionary {
-
     @Column(nullable = false, name = "article")
     private String article;
-
     @Column(nullable = false, name = "pantone")
     private String pantone;
-
     @Column(nullable = false, name = "hex")
     private String hex;
-
     @ManyToOne(targetEntity = ColorScheme.class)
     @JoinColumn(name = "color_scheme", referencedColumnName = "id")
     private ColorScheme colorScheme;
+
+    public Color(String name, String article) {
+        super(name);
+        this.article = article;
+        this.publicName = article + " " + name;
+    }
+
+    public Color() {
+        super();
+    }
+
+    public Color(Long id, String publicName) {
+        super(id, publicName);
+    }
+
+    @Override
+    public void setName(String name) {
+        super.setName(name);
+        this.publicName = this.article + " " + name;
+    }
 
     public String getArticle() {
         return article;
@@ -26,6 +42,7 @@ public class Color extends MaketDictionary {
 
     public void setArticle(String article) {
         this.article = article;
+        this.publicName = article + " " + this.getName();
     }
 
     public String getPantone() {
@@ -64,6 +81,10 @@ public class Color extends MaketDictionary {
                 // Дополнительные поля и порядок сортировки, если необходимо
                 Sort.Order.desc("colorScheme"),
                 Sort.Order.desc("article")
-                );
+        );
+    }
+
+    public static String defaultOrderString() {
+        return "colorScheme,article";
     }
 }
