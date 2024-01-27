@@ -15,8 +15,8 @@ export function fillLines(ulContent, dictionaryList) {
             event.stopPropagation();
             await selectFromList(event.target);
         };
-        newLine.dataset.value = Object.keys(elem)[0];
-        newLine.textContent = Object.values(elem)[0];
+        newLine.dataset.value = elem['id'];
+        newLine.textContent = elem['publicName'];
         ulContent.appendChild(newLine);
     });
 }
