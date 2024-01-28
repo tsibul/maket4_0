@@ -1,7 +1,6 @@
 package ru.maket.maket4_0.db.dictionary;
 
 import jakarta.persistence.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 
 
@@ -18,12 +17,27 @@ public abstract class MaketDictionary {
     @Column(name = "deleted", columnDefinition = "boolean default false", nullable = false)
     private boolean deleted;
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setPublicName(String publicName) {
+        this.publicName = publicName;
+    }
+
     public MaketDictionary() {
         this.deleted = false;
     }
 
     public MaketDictionary(Long id, String publicName) {
         this.id = id;
+        this.publicName = publicName;
+//        this.name = publicName;
+    }
+
+    public MaketDictionary(Long id, String name, String publicName) {
+        this.id = id;
+        this.name = name;
         this.publicName = publicName;
     }
 
