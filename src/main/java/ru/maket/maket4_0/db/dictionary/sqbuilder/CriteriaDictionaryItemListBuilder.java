@@ -5,24 +5,22 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 import jakarta.persistence.metamodel.SingularAttribute;
 import ru.maket.maket4_0.db.dictionary.MaketDictionary;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.List;
 import java.util.Set;
 
 import static ru.maket.maket4_0.db.dictionary.DictionaryList.dictionaryList;
 
-public class CriteriaDictionaryItemListBuilder implements CriteriaRequestBuilder<MaketDictionary> {
+public class CriteriaDictionaryItemListBuilder implements CriteriaRequestBuilder<Object> {
     private final EntityManager entityManager;
-    private final Class<? extends MaketDictionary> classType;
+    private final Class<? extends Object> classType;
     private final Set<SingularAttribute<?, ?>> fieldSet;
     private final CriteriaBuilder criteriaBuilder;
-    private final CriteriaQuery<MaketDictionary> criteriaQuery;
-    private final Root<MaketDictionary> root;
+    private final CriteriaQuery<Object> criteriaQuery;
+    private final Root<? extends Object> root;
 
     public CriteriaDictionaryItemListBuilder(Set<SingularAttribute<?, ?>> fieldSet, String className, EntityManager entityManager
     ) {
@@ -30,11 +28,11 @@ public class CriteriaDictionaryItemListBuilder implements CriteriaRequestBuilder
         this.classType = dictionaryList().get(className);
         this.fieldSet = fieldSet;
         this.criteriaBuilder = entityManager.getCriteriaBuilder();
-        this.criteriaQuery = (CriteriaQuery<MaketDictionary>) criteriaBuilder.createQuery(classType);
-        this.root = (Root<MaketDictionary>) criteriaQuery.from(classType);
+        this.criteriaQuery = (CriteriaQuery<Object>) criteriaBuilder.createQuery(classType);
+        this.root =  criteriaQuery.from(classType);
     }
 
-    public TypedQuery<MaketDictionary> buildCriteriaQuery() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+    public TypedQuery<Object> buildCriteriaQuery() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
 //        root.alias("c");
 
 //        criteriaQuery.select(criteriaBuilder.construct(classType, root.get("id"), root.get("publicName")));
@@ -44,7 +42,7 @@ public class CriteriaDictionaryItemListBuilder implements CriteriaRequestBuilder
         addPredicates();
         addOrderBy();
 
-        TypedQuery<MaketDictionary> finalQuery = entityManager.createQuery(criteriaQuery);
+        TypedQuery<Object> finalQuery = entityManager.createQuery(criteriaQuery);
 
         return finalQuery;
     }
