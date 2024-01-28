@@ -13,7 +13,7 @@ import static ru.maket.maket4_0.db.dictionary.FieldNames.dataBaseNames;
 
 public class DictionaryItemListBuilder implements SQLRequestBuilder {
     private final JdbcTemplate jdbcTemplate;
-    private Class<? extends MaketDictionary> classType;
+    private Class<? extends Object> classType;
     private Set<SingularAttribute<?, ?>> fieldSet;
 
 
