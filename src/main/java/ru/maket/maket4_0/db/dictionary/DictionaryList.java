@@ -20,8 +20,8 @@ public class DictionaryList {
         this.colorSchemeRepository = colorSchemeRepository;
     }
 
-    public static HashMap<String, Class<? extends MaketDictionary>> dictionaryList () {
-        HashMap<String, Class<? extends MaketDictionary>> dictList = new HashMap<>();
+    public static HashMap<String, Class<?>> dictionaryList () {
+        HashMap<String, Class<? extends Object>> dictList = new HashMap<>();
         dictList.put("Color", Color.class);
         dictList.put("ColorScheme", ColorScheme.class);
         dictList.put("Customer", Customer.class);
