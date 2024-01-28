@@ -1,6 +1,7 @@
 package ru.maket.maket4_0.controller.jsonController;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 import jakarta.persistence.metamodel.EntityType;
 import jakarta.persistence.metamodel.SingularAttribute;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ru.maket.maket4_0.db.dictionary.*;
 import org.springframework.jdbc.core.JdbcTemplate;
+import ru.maket.maket4_0.db.dictionary.sqbuilder.CriteriaNextTwentyBuilder;
 import ru.maket.maket4_0.db.dictionary.sqbuilder.NextTwentyRecordsSQLBuilder;
 
 
@@ -35,15 +37,15 @@ public class NextRecordsController {
     public ResponseEntity<List<Map<String, Object>>> nextRecordJson(@PathVariable String className, @PathVariable String lastRecord,
                                                                     @PathVariable String searchString, @PathVariable String shDeleted)
             throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        Class<? extends MaketDictionary> dictClass = dictionaryList().get(className);
+        Class<? extends Object> dictClass = dictionaryList().get(className);
         EntityType<?> entityType = entityManager.getMetamodel().entity(dictClass);
         Set<SingularAttribute<?, ?>> fieldSet = (Set<SingularAttribute<?, ?>>) entityType.getSingularAttributes();
-        NextTwentyRecordsSQLBuilder nextTwentyRecordsSQLBuilder =
-                new NextTwentyRecordsSQLBuilder(fieldSet, className, shDeleted, searchString, lastRecord);
-        String sqlRequest = nextTwentyRecordsSQLBuilder.totalSQLRequest();
-        List<Map<String, Object>> itemsList = jdbcTemplate.queryForList(sqlRequest);
 
-        return ResponseEntity.ok(itemsList);
+        CriteriaNextTwentyBuilder criteriaNextTwentyBuilder =
+                new CriteriaNextTwentyBuilder(entityManager, className, fieldSet, lastRecord, searchString, shDeleted);
+        TypedQuery<Map<String, Object>> typedQuery = criteriaNextTwentyBuilder.buildCriteriaQuery();
+        List<Map<String, Object>> crList = typedQuery.getResultList();
+        return ResponseEntity.ok(crList);
     }
 
 
