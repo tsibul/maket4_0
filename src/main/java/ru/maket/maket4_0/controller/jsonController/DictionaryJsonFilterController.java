@@ -26,22 +26,23 @@ public class DictionaryJsonFilterController {
 
     @GetMapping("/dictionary_json_filter/{className}")
     @ResponseBody
-    public ResponseEntity<List<LinkedHashMap<String, Object>>> dictionaryItemsList(@PathVariable String className)
+    public ResponseEntity<List<? extends Object>> dictionaryItemsList(@PathVariable String className)
             throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
-        Class<? extends MaketDictionary> dictClass = dictionaryList().get(className);
+        Class<? extends Object> dictClass = dictionaryList().get(className);
         EntityType<?> entityType = entityManager.getMetamodel().entity(dictClass);
         Set<SingularAttribute<?, ?>> fieldSet = (Set<SingularAttribute<?, ?>>) entityType.getSingularAttributes();
         CriteriaDictionaryItemListBuilder criteriaDictionaryItemListBuilder =
                 new CriteriaDictionaryItemListBuilder(fieldSet, className, entityManager);
-        TypedQuery<MaketDictionary> criteriaQuery = criteriaDictionaryItemListBuilder.buildCriteriaQuery();
-        List<LinkedHashMap<String, Object>> itemsList = criteriaQuery.getResultStream()
-                .map(item -> {
-                    LinkedHashMap<String, Object> map = new LinkedHashMap<>();
-                    map.put("id", item.getId());
-                    map.put("publicName", item.getPublicName());
-                    return map;
-                })
-                .toList();
+        TypedQuery<? extends Object> criteriaQuery = criteriaDictionaryItemListBuilder.buildCriteriaQuery();
+        List<? extends Object> itemsList = criteriaQuery.getResultList();
+//                getResultStream()
+//                .map(item -> {
+//                    LinkedHashMap<String, Object> map = new LinkedHashMap<>();
+//                    map.put("id", item.getId());
+//                    map.put("publicName", item.getPublicName());
+//                    return map;
+//                })
+//                .toList();
 
         return ResponseEntity.ok(itemsList);
 
