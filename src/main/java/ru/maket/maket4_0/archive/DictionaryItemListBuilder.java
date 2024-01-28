@@ -2,8 +2,6 @@ package ru.maket.maket4_0.archive;
 
 import jakarta.persistence.metamodel.SingularAttribute;
 import org.springframework.jdbc.core.JdbcTemplate;
-import ru.maket.maket4_0.db.dictionary.MaketDictionary;
-import ru.maket.maket4_0.db.dictionary.sqbuilder.SQLRequestBuilder;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Set;

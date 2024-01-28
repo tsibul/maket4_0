@@ -1,4 +1,4 @@
-package ru.maket.maket4_0.db.dictionary.sqbuilder;
+package ru.maket.maket4_0.archive;
 
 import java.lang.reflect.InvocationTargetException;
 
