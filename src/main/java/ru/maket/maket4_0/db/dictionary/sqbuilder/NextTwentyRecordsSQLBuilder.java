@@ -15,7 +15,7 @@ import static ru.maket.maket4_0.db.dictionary.FieldNames.fieldNames;
 
 public class NextTwentyRecordsSQLBuilder implements SQLRequestBuilder {
     private final JdbcTemplate jdbcTemplate;
-    private final Class<? extends MaketDictionary> classType;
+    private final Class<? extends Object> classType;
     private final Integer lastRecord;
     private final String searchString;
     private final boolean deleted;
