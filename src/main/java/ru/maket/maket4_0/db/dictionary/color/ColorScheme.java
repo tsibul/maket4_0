@@ -8,6 +8,7 @@ public class ColorScheme extends MaketDictionary {
 
     public ColorScheme(Long id, String publicName) {
         super(id, publicName);
+        this.setName(publicName);
     }
 
     public ColorScheme() {
