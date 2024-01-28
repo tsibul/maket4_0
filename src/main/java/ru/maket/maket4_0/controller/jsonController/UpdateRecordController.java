@@ -54,7 +54,7 @@ public class UpdateRecordController {
     }
 
     private static Field getCurrentField(String className, String fieldName){
-        Class<? extends MaketDictionary> dictClass = dictionaryList().get(className);
+        Class<? extends Object> dictClass = dictionaryList().get(className);
         return ReflectionUtils.findRequiredField(dictClass, fieldName);
     }
 
